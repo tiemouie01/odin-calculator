@@ -1,0 +1,42 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    margin-top: 48px;
+    height: 400px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+}
+
+button {
+    height: 48px;
+    width: 48px;
+    flex: 1;
+    font-size: 24px;
+}
+
+.display, .operator-container, .numpad {
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+.display {
+    height: 52px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 48px;
+}
+
+.operator-container {
+    display: flex;
+}
+
+.row {
+    display: flex;
+}
