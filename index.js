@@ -1,15 +1,7 @@
 const add = (firstNumber, secondNumber) => firstNumber + secondNumber;
 const subtract = (firstNumber, secondNumber) => firstNumber - secondNumber;
 const multiply = (firstNumber, secondNumber) => firstNumber * secondNumber;
-
-const divide = (firstNumber, secondNumber) => {
-    if (secondNumber === 0) {
-        alert('0 cannot be used as a divisor. Your entry has been changed to 1 instead.');
-        secondNumber = 1;
-    };
-    return firstNumber % secondNumber !== 0 ? (firstNumber/secondNumber).toFixed(3) : firstNumber / secondNumber;
-}; // when the result of a division includes decimal numbers. The function returns the quotient to
-   // three decimal places.
+const divide = (firstNumber, secondNumber) => firstNumber / secondNumber;
 
 function operate(operator, firstNumber, secondNumber) {
     let result;
@@ -41,6 +33,10 @@ function calculateSolution(display, signs, operands) {
     for (let i = 0; i  < signs.length; i++) {
         solution = operate(signs[i], solution, operands[i+1]); 
     }
+
+    solution = solution.toString();
+    if (solution.length >= 10) solution = solution.slice(0,10);
+
     display.textContent = solution;
     // A for loop is used to iteratively calculate each pair of expressions and a final solution is
     // displayed when the loop ends.
