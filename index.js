@@ -46,18 +46,8 @@ function calculateSolution(display, signs, operands) {
     // displayed when the loop ends.
 }
 
-let operands = []; // stores all the operands entered in a single expression.
-let signs = []; // stores all the operators clicked in a single expression.
+function computeOperator(operator, display, signs, operands) {
 
-const numbers = document.querySelectorAll('.number');
-const display = document.querySelector('.display');
-
-numbers.forEach(number => number.addEventListener('click',() => {
-    display.textContent += number.textContent;
-}));
-
-const operators = document.querySelectorAll('.operator');
-operators.forEach(operator => operator.addEventListener('click', () => {
     /* When an operator is pressed by the user. The sign of the operator is added on to the signs array.
        The operand on the right side of the expression is appended to the operands array. These values
        are later used to calculate the solution of the overall expression when the '=' is pressed.*/
@@ -70,7 +60,20 @@ operators.forEach(operator => operator.addEventListener('click', () => {
     }
     signs.push(operator.textContent);
     display.textContent += ` ${operator.textContent} `;
+}
+
+let operands = []; // stores all the operands entered in a single expression.
+let signs = []; // stores all the operators clicked in a single expression.
+
+const numbers = document.querySelectorAll('.number');
+const display = document.querySelector('.display');
+
+numbers.forEach(number => number.addEventListener('click',() => {
+    display.textContent += number.textContent;
 }));
+
+const operators = document.querySelectorAll('.operator');
+operators.forEach(operator => operator.addEventListener('click',() => computeOperator(operator, display, signs, operands)));
 
 const equals = document.querySelector('.equals');
 equals.addEventListener('click', () => calculateSolution(display, signs, operands));
