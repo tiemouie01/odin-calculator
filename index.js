@@ -38,7 +38,15 @@ numbers.forEach(number => number.addEventListener('click',() => {
 }));
 
 const operators = document.querySelectorAll('.operator');
-operators.forEach(operator => operator.addEventListener('click', () => {
+operators.forEach(operatorElement => operatorElement.addEventListener('click', () => {
     firstNumber = Number(display.textContent);
-    display.textContent += ` ${operator.textContent} `;
+    operator = operatorElement.textContent;
+    display.textContent += ` ${operatorElement.textContent} `;
 }))
+
+const equals = document.querySelector('.equals');
+equals.addEventListener('click', () => {
+    let operatorIndex = display.textContent.indexOf(operator);
+    secondNumber = Number(display.textContent.slice(operatorIndex + 1).trimStart());
+    display.textContent = operate(operator, firstNumber, secondNumber);
+})
