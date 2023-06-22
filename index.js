@@ -25,9 +25,21 @@ function operate(operator, firstNumber, secondNumber) {
     return result;
 }
 
+function calculateSolution(display, operator, firstNumber, secondNumber) {
+
+    /*When the equal sign is clicked on the calculator. The second number is collected from the display
+      and stored in a variable. All necessary parts of the calculation are then passed to the operate
+      function to perform the calculation and display the result.*/
+
+    let operatorIndex = display.textContent.indexOf(operator);
+    secondNumber = Number(display.textContent.slice(operatorIndex + 1).trimStart());
+    display.textContent = operate(operator, firstNumber, secondNumber);
+}
+
 let operator;
 let firstNumber;
 let secondNumber;
+let solution = 0;
 
 const numbers = document.querySelectorAll('.number');
 const display = document.querySelector('.display');
@@ -49,16 +61,7 @@ operators.forEach(operatorElement => operatorElement.addEventListener('click', (
 }));
 
 const equals = document.querySelector('.equals');
-equals.addEventListener('click', () => {
-
-    /*When the equal sign is clicked on the calculator. The second number is collected from the display
-      and stored in a variable. All necessary parts of the calculation are then passed to the operate
-      function to perform the calculation and display the result.*/
-
-    let operatorIndex = display.textContent.indexOf(operator);
-    secondNumber = Number(display.textContent.slice(operatorIndex + 1).trimStart());
-    display.textContent = operate(operator, firstNumber, secondNumber);
-});
+equals.addEventListener('click', () => calculateSolution(display,operator,firstNumber,secondNumber));
 
 const clear = document.querySelector('.clear');
 clear.addEventListener('click', () => {
