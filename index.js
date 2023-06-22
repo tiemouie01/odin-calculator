@@ -1,7 +1,9 @@
 const add = (firstNumber, secondNumber) => firstNumber + secondNumber;
 const subtract = (firstNumber, secondNumber) => firstNumber - secondNumber;
 const multiply = (firstNumber, secondNumber) => firstNumber * secondNumber;
-const divide = (firstNumber, secondNumber) => firstNumber / secondNumber;
+const divide = (firstNumber, secondNumber) => {
+    return firstNumber % secondNumber !== 0 ? (firstNumber/secondNumber).toFixed(3) : firstNumber / secondNumber;
+};
 
 function operate(operator, firstNumber, secondNumber) {
     /* This function receives an operator and operands. The operator is used to
