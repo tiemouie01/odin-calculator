@@ -3,13 +3,10 @@ const subtract = (firstNumber, secondNumber) => firstNumber - secondNumber;
 const multiply = (firstNumber, secondNumber) => firstNumber * secondNumber;
 const divide = (firstNumber, secondNumber) => {
     return firstNumber % secondNumber !== 0 ? (firstNumber/secondNumber).toFixed(3) : firstNumber / secondNumber;
-};
+}; // when the result of a division includes decimal numbers. The function returns the quotient to
+   // three decimal places.
 
 function operate(operator, firstNumber, secondNumber) {
-    /* This function receives an operator and operands. The operator is used to
-       determine which calculation function will be executed. The result of the
-       selected calculation is then return at the end of the function.*/
-
     let result;
     switch(operator) {
         case '+':
@@ -41,6 +38,7 @@ numbers.forEach(number => number.addEventListener('click',() => {
 
 const operators = document.querySelectorAll('.operator');
 operators.forEach(operatorElement => operatorElement.addEventListener('click', () => {
+    
     /* This function collects the first number the display and the operator from the clicked button
        and stores these values for the calculation to be executed. It also displays the operator 
        that has been clicked by the user.*/
@@ -52,6 +50,7 @@ operators.forEach(operatorElement => operatorElement.addEventListener('click', (
 
 const equals = document.querySelector('.equals');
 equals.addEventListener('click', () => {
+
     /*When the equal sign is clicked on the calculator. The second number is collected from the display
       and stored in a variable. All necessary parts of the calculation are then passed to the operate
       function to perform the calculation and display the result.*/
