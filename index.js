@@ -39,14 +39,30 @@ numbers.forEach(number => number.addEventListener('click',() => {
 
 const operators = document.querySelectorAll('.operator');
 operators.forEach(operatorElement => operatorElement.addEventListener('click', () => {
+    /* This function collects the first number the display and the operator from the clicked button
+       and stores these values for the calculation to be executed. It also displays the operator 
+       that has been clicked by the user.*/
+
     firstNumber = Number(display.textContent);
     operator = operatorElement.textContent;
     display.textContent += ` ${operatorElement.textContent} `;
-}))
+}));
 
 const equals = document.querySelector('.equals');
 equals.addEventListener('click', () => {
+    /*When the equal sign is clicked on the calculator. The second number is collected from the display
+      and stored in a variable. All necessary parts of the calculation are then passed to the operate
+      function to perform the calculation and display the result.*/
+
     let operatorIndex = display.textContent.indexOf(operator);
     secondNumber = Number(display.textContent.slice(operatorIndex + 1).trimStart());
     display.textContent = operate(operator, firstNumber, secondNumber);
-})
+});
+
+const clear = document.querySelector('.clear');
+clear.addEventListener('click', () => {
+    firstNumber = 0;
+    secondNumber = 0;
+    operator = '';
+    display.textContent = '';
+}); // The clear button clears the display and nullifies all variables to prepare for the next calculation.
